@@ -1,0 +1,3 @@
+-- Seed data for local development (Phase 2+). Intentionally empty in Phase 1:
+-- the app stores nothing server-side yet, and real readings require a real
+-- authenticated user (see supabase/tests/rls.sql for the isolation test).

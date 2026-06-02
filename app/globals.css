@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+/* Optional class-based dark mode hook (Phase 1 ships light-first). */
+@custom-variant dark (&:is(.dark *));
+
+/*
+  ───────────────────────────────────────────────────────────────────────────
+  CARDIA AI — "Warm Editorial" design tokens.
+  Calm, trustworthy, editorial, clinical-but-human. No alarmist reds/neons.
+  Raw palette lives in :root so it stays themeable; the @theme inline block
+  maps it onto utilities + the shadcn semantic contract. Text variants are
+  tuned to clear WCAG AA against their intended backgrounds.
+  ───────────────────────────────────────────────────────────────────────────
+*/
+:root {
+  /* Surfaces — warm paper, not stark white */
+  --canvas: #f7f5f0; /* page background */
+  --surface: #fcfaf6; /* subtle raised */
+  --surface-raised: #ffffff; /* cards */
+  --hero: #14242f; /* deep navy hero/anchors */
+
+  /* Ink — deep desaturated navy, never pure black */
+  --ink: #14242f; /* primary text + headings */
+  --ink-muted: #46555d; /* secondary text (AA on canvas) */
+  --ink-subtle: #5c6a72; /* tertiary / labels (AA on canvas) */
+
+  /* Hairlines */
+  --border-hair: #e6e1d7;
+  --border-strong: #d8d1c4;
+
+  /* On-dark (text/elements over the navy hero) */
+  --paper: #f4f2ec;
+  --paper-muted: #aec0c6;
+
+  /* Accent — one considered teal, used sparingly */
+  --accent: #2e8b83; /* fills, rings, large text */
+  --accent-strong: #1f6e66; /* small text / links on light (AA) */
+  --accent-soft: #e2efec; /* tinted hover / selected bg */
+  --accent-on-dark: #5bb5ab; /* accent over navy */
+
+  /* Status — muted + mature. base=dot/ring, strong=text (AA), soft=tint bg */
+  --optimal: #6fa287;
+  --optimal-strong: #3e6b54;
+  --optimal-soft: #e7efe8;
+  --borderline: #c8943b;
+  --borderline-strong: #8a6320;
+  --borderline-soft: #f5ecd9;
+  --elevated: #b5694f;
+  --elevated-strong: #8c4a34;
+  --elevated-soft: #f3e4dc;
+
+  /* Radius scale */
+  --radius: 0.875rem;
+
+  /* ── shadcn semantic contract → mapped onto the palette ───────────────── */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface-raised);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink); /* deep-navy primary buttons on paper */
+  --primary-foreground: var(--paper);
+  --secondary: #efeae0;
+  --secondary-foreground: var(--ink);
+  --muted: #efeae0;
+  --muted-foreground: var(--ink-muted);
+  --accent-ui: var(--accent-soft); /* shadcn "accent" = hover/active surface */
+  --accent-ui-foreground: var(--accent-strong);
+  --destructive: var(--elevated-strong);
+  --destructive-foreground: var(--paper);
+  --border: var(--border-hair);
+  --input: var(--border-strong);
+  --ring: var(--accent);
+}
+
+@theme inline {
+  /* Palette → utilities (bg-canvas, text-ink, border-optimal, …) */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-hero: var(--hero);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-border-hair: var(--border-hair);
+  --color-border-strong: var(--border-strong);
+  --color-paper: var(--paper);
+  --color-paper-muted: var(--paper-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-on-dark: var(--accent-on-dark);
+  --color-optimal: var(--optimal);
+  --color-optimal-strong: var(--optimal-strong);
+  --color-optimal-soft: var(--optimal-soft);
+  --color-borderline: var(--borderline);
+  --color-borderline-strong: var(--borderline-strong);
+  --color-borderline-soft: var(--borderline-soft);
+  --color-elevated: var(--elevated);
+  --color-elevated-strong: var(--elevated-strong);
+  --color-elevated-soft: var(--elevated-soft);
+
+  /* shadcn semantic → utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-ui: var(--accent-ui);
+  --color-accent-ui-foreground: var(--accent-ui-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Type families (wired to next/font CSS variables in layout.tsx) */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Radii */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+
+  /* Calm, non-bouncy disclosure animations */
+  --animate-accordion-down: accordion-down 0.24s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-collapse-down: collapse-down 0.24s ease-out;
+  --animate-collapse-up: collapse-up 0.2s ease-out;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv05", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.012em;
+  }
+  /* Visible, on-brand keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+  }
+}
+
+/* Radix disclosure keyframes (heights are provided by Radix at runtime) */
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+@keyframes collapse-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+@keyframes collapse-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Honour reduced-motion globally — doubly important for a health-anxiety-aware
+   product. JS (Motion) reveals are additionally gated via useReducedMotion(). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
