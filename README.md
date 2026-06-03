@@ -69,12 +69,17 @@ components/
 lib/
   rules-engine/           ★ Pure, typed, fully-tested clinical engine (see VERIFICATION.md)
   schemas/                Zod schemas (generated from the engine's input ranges)
-  data-access/            Centralized Supabase DAL behind a feature flag (Phase 2)
+  crypto/                 AES-256-GCM encrypt/decrypt (Phase 2.1, server-only)
+  data-access/            Supabase DAL: readings (Phase 2) + anonymous capture (Phase 2.1)
+  client/                 Browser capture (sendBeacon → /api/assessments)
+  analytics/              Stable anonymous browser id
   persistence/            Phase 1 browser-only assessment store
   content/                Centralized regulatory copy
   config/                 Feature flags + env access
+app/api/assessments/      Anonymous capture endpoint (Phase 2.1, server-only)
+scripts/                  decrypt-assessment.ts (exact-value analysis)
 supabase/
-  migrations/             profiles + readings tables, RLS policies
+  migrations/             profiles + readings + assessments tables, RLS policies
   tests/rls.sql           Runnable RLS isolation test
 proxy.ts                  Supabase session-refresh scaffold (Next 16 renamed middleware → proxy)
 tests/                    unit/ (Vitest) and e2e/ (Playwright)
@@ -119,6 +124,11 @@ status colors (no neon, no alarmist reds). Display **Fraunces** + body/data
 
 - **Phase 1: nothing leaves the browser.** The assessment is held in
   `sessionStorage`, or — opt-in — mirrored to `localStorage` ("keep on my device").
+- **Phase 2.1 (optional, off by default): anonymous encrypted capture.** With
+  `NEXT_PUBLIC_CAPTURE_ENABLED=true`, a copy is also stored server-side with **no
+  account** — exact values AES-256-GCM encrypted, only de-identified categories in
+  plaintext. The browser never touches the DB (all writes are server-side via the
+  service role against an RLS-locked table). See the setup section below.
 - **RLS on every user table**, default-deny, policies keyed to `auth.uid()` so a
   user can only ever touch their own rows. Verify with `supabase/tests/rls.sql`.
 - The **service-role key is server-only** (`lib/data-access/supabase/admin.ts`,
@@ -133,7 +143,7 @@ status colors (no neon, no alarmist reds). Display **Fraunces** + body/data
 ## Testing
 
 ```bash
-npm test                       # 137 unit tests: engine boundaries, schemas, DAL guards
+npm test                       # 148 unit tests: engine, schemas, DAL guards, crypto, de-identification
 npx playwright install chromium
 npm run test:e2e               # critical flow, empty state, validation, reduced-motion
 ```
@@ -172,6 +182,47 @@ live URL:
    output are the Next.js defaults.
 5. **Lighthouse:** run against the deployed URL (or `npm run build && npm start`)
    and confirm strong Performance / Accessibility / Best-Practices scores.
+
+---
+
+## Phase 2.1 — Anonymous encrypted capture (optional)
+
+Off by default. When enabled, every completed assessment is also stored
+server-side **with no account and no login** — exact values encrypted at rest
+(AES-256-GCM), de-identified categories in plaintext for analysis. The browser
+never touches the table; writes go through `/api/assessments` (server-only) via
+the service role against an RLS-locked table.
+
+**Enable it**
+
+1. Apply the migration `supabase/migrations/20260615000000_assessments.sql`
+   (SQL editor, or `supabase db push`).
+2. Set the env (locally in `.env.local`, and in Vercel):
+   ```
+   ENCRYPTION_KEY=...                  # openssl rand -base64 32  — server-only, back it up
+   NEXT_PUBLIC_CAPTURE_ENABLED=true
+   # plus NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY / SUPABASE_SERVICE_ROLE_KEY
+   ```
+   With the flag on, the privacy copy automatically switches from "nothing leaves
+   your browser" to "anonymous & encrypted". The server re-checks the secrets — if
+   any are missing it simply does nothing (`204`).
+
+**Analyze it**
+
+- **No decryption** for category-level questions — query the plaintext columns:
+  ```sql
+  select composite_signal, count(*) from assessments group by 1;
+  select tiers->>'ldl' as ldl_tier, count(*) from assessments group by 1;
+  select age_band, sex, avg(within_range::float / markers_entered) from assessments group by 1, 2;
+  ```
+- **Exact values** (when you need the numbers):
+  ```bash
+  npx tsx --env-file=.env.local scripts/decrypt-assessment.ts
+  ```
+
+**Anonymity** — a random `anon_id` (browser `localStorage`) groups repeat
+submissions for cohort analysis. No name, email, IP, user-agent, or exact age is
+ever stored; `tiers` carry categories only, never numbers.
 
 ---
 

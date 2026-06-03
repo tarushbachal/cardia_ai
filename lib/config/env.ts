@@ -22,6 +22,11 @@ export function requirePublicSupabaseConfig(): { url: string; anonKey: string } 
   return { url: publicEnv.supabaseUrl, anonKey: publicEnv.supabaseAnonKey };
 }
 
+/** Server-only, non-throwing presence check. */
+export function hasServiceRoleKey(): boolean {
+  return Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
 /** Server-only. Never call from client code. */
 export function requireServiceRoleKey(): string {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;

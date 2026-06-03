@@ -19,6 +19,8 @@ import {
 } from "@/lib/rules-engine";
 import { parseAssessment, validateMeasurement } from "@/lib/schemas";
 import { saveAssessment } from "@/lib/persistence/assessment-store";
+import { captureAssessment } from "@/lib/client/capture";
+import { FLAGS } from "@/lib/config/flags";
 
 type ValueMap = Record<BiomarkerKey, string>;
 type YesNo = "" | "yes" | "no";
@@ -130,6 +132,7 @@ export function AssessmentFlow() {
       return;
     }
     saveAssessment(result.data);
+    captureAssessment(result.data); // anonymous, encrypted, server-side (no-op unless enabled)
     router.push("/results");
   }
 
@@ -142,8 +145,10 @@ export function AssessmentFlow() {
       <header className="max-w-xl">
         <h1 className="text-ink text-3xl sm:text-4xl">Your assessment</h1>
         <p className="text-ink-muted mt-3 text-base leading-relaxed">
-          Enter the numbers you have — every field is optional. Nothing is sent to a server; your
-          entries stay in this browser.
+          Enter the numbers you have — every field is optional.{" "}
+          {FLAGS.captureEnabled
+            ? "We store only an anonymous, encrypted copy — never linked to your identity."
+            : "Nothing is sent to a server; your entries stay in this browser."}
         </p>
       </header>
 
