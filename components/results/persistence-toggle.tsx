@@ -34,8 +34,8 @@ export function PersistenceToggle() {
           <p className="text-ink text-sm font-medium">Keep this on my device</p>
           <p className="text-ink-muted mt-1 text-sm leading-relaxed">
             {on
-              ? "Saved to this browser only — it’ll be here when you come back. Nothing is sent to a server."
-              : "Off — your assessment clears when you close this tab. Nothing ever leaves your browser."}
+              ? "Saved to this browser only — it’ll be here when you come back."
+              : "Off — your assessment clears when you close this tab."}
           </p>
         </div>
       </div>

@@ -8,8 +8,9 @@ import { toAssessmentContext, toBiomarkerInputs } from "@/lib/schemas";
 import { clearAssessment, loadAssessment } from "@/lib/persistence/assessment-store";
 import { Button } from "@/components/ui/button";
 import { CompositeSignal } from "./composite-signal";
+import { ResultsSnapshot } from "./results-snapshot";
 import { AiExplanationSlot } from "./ai-explanation-slot";
-import { BiomarkerBreakdown } from "./biomarker-breakdown";
+import { BiomarkerGrid } from "./biomarker-grid";
 import { DoctorPanel } from "./doctor-panel";
 import { PersistenceToggle } from "./persistence-toggle";
 import { ResultsEmptyState } from "./empty-state";
@@ -62,7 +63,7 @@ export function ResultsView() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-14">
+    <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
       <div className="flex items-center justify-between gap-4">
         <p className="text-ink-subtle text-sm font-medium">Your results</p>
         <Button variant="ghost" size="sm" onClick={startOver}>
@@ -71,10 +72,24 @@ export function ResultsView() {
         </Button>
       </div>
 
-      <div className="mt-5 space-y-5">
-        <CompositeSignal composite={state.composite} />
-        <AiExplanationSlot />
-        <BiomarkerBreakdown results={state.results} />
+      {/* Summary band — composite signal + at-a-glance snapshot + reserved AI slot */}
+      <div className="mt-6 grid gap-5 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <CompositeSignal composite={state.composite} />
+        </div>
+        <div className="flex flex-col gap-5 lg:col-span-5">
+          <ResultsSnapshot composite={state.composite} />
+          <AiExplanationSlot />
+        </div>
+      </div>
+
+      {/* Detail — per-biomarker multi-column grid */}
+      <div className="mt-10">
+        <BiomarkerGrid results={state.results} />
+      </div>
+
+      {/* Context + action */}
+      <div className="mt-10 space-y-5">
         <DoctorPanel results={state.results} />
         <PersistenceToggle />
       </div>

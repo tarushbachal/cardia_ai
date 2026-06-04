@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Layers, Lock, PenLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Disclaimer } from "@/components/layout/disclaimer";
 import { REG } from "@/lib/content/regulatory";
+import { FLAGS } from "@/lib/config/flags";
 
 export default function HomePage() {
   return (
@@ -45,7 +46,7 @@ export default function HomePage() {
               </div>
               <div className="inline-flex items-center gap-2">
                 <Lock className="text-accent-strong size-4" aria-hidden="true" />
-                Nothing leaves your browser
+                {FLAGS.captureEnabled ? "Anonymous & encrypted" : "Nothing leaves your browser"}
               </div>
             </dl>
           </div>
@@ -112,7 +113,11 @@ export default function HomePage() {
               />
               <DiffPoint
                 title="Private by default"
-                body="In this version your numbers never leave your device. You choose whether to keep them in your browser."
+                body={
+                  FLAGS.captureEnabled
+                    ? "No account, no login. What we store is anonymous and encrypted — never tied to your name or identity."
+                    : "In this version your numbers never leave your device. You choose whether to keep them in your browser."
+                }
               />
             </div>
             <div className="border-paper-muted/20 mt-12 flex flex-col items-start gap-5 border-t pt-9 sm:flex-row sm:items-center sm:justify-between">

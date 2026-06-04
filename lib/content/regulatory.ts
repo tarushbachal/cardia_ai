@@ -30,6 +30,10 @@ export const REG = {
   sourcesNote:
     "Every category is traceable to a specific, dated clinical guideline — linked, never guessed.",
 
-  /** Privacy posture for Phase 1 (no server, optional local-only save). */
-  privacyShort: "Your numbers stay in your browser. Nothing is sent to a server in this version.",
+  /** Privacy posture when capture is OFF (local-only). */
+  privacyShort: "Your numbers stay in your browser. Nothing is sent to a server.",
+
+  /** Privacy posture when anonymous encrypted capture is ON (Phase 2.1). */
+  privacyAnonymous:
+    "Your numbers are stored anonymously and encrypted — never linked to your identity.",
 } as const;

@@ -23,41 +23,48 @@ export function MeasurementField({
   const errorId = `${id}-error`;
 
   return (
-    <div className="space-y-1.5">
-      <div className="flex items-baseline justify-between gap-3">
-        <Label htmlFor={id}>
-          {def.label} <span className="text-ink-subtle font-normal">({def.shortLabel})</span>
-        </Label>
-        <span className="text-ink-subtle text-xs">optional</span>
-      </div>
-      <p id={hintId} className="text-ink-subtle text-xs leading-relaxed">
-        {def.description}
-      </p>
-      <div className="relative">
-        <Input
-          id={id}
-          inputMode="decimal"
-          autoComplete="off"
-          placeholder="—"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          onBlur={onBlur}
-          aria-describedby={error ? `${hintId} ${errorId}` : hintId}
-          aria-invalid={error ? true : undefined}
-          className="pr-16"
-        />
-        <span
-          aria-hidden="true"
-          className="text-ink-subtle pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium"
-        >
-          {def.unit}
-        </span>
-      </div>
-      {error ? (
-        <p id={errorId} role="alert" className="text-elevated-strong text-xs font-medium">
-          {error}
+    // Full-height flex column so the input pins to the bottom (mt-auto): inputs
+    // line up across a row even when descriptions differ in length.
+    <div className="flex h-full flex-col">
+      <div>
+        <div className="flex items-baseline justify-between gap-3">
+          <Label htmlFor={id}>
+            {def.label} <span className="text-ink-subtle font-normal">({def.shortLabel})</span>
+          </Label>
+          <span className="text-ink-subtle text-xs">optional</span>
+        </div>
+        <p id={hintId} className="text-ink-subtle mt-1.5 text-xs leading-relaxed">
+          {def.description}
         </p>
-      ) : null}
+      </div>
+
+      <div className="mt-auto pt-3">
+        <div className="relative">
+          <Input
+            id={id}
+            inputMode="decimal"
+            autoComplete="off"
+            placeholder="—"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            onBlur={onBlur}
+            aria-describedby={error ? `${hintId} ${errorId}` : hintId}
+            aria-invalid={error ? true : undefined}
+            className="pr-16"
+          />
+          <span
+            aria-hidden="true"
+            className="text-ink-subtle pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium"
+          >
+            {def.unit}
+          </span>
+        </div>
+        {error ? (
+          <p id={errorId} role="alert" className="text-elevated-strong mt-1.5 text-xs font-medium">
+            {error}
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 }

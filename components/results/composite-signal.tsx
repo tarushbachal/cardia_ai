@@ -25,7 +25,7 @@ export function CompositeSignal({ composite }: { composite: CompositeSummary }) 
   return (
     <section
       aria-label="Your summary"
-      className="border-border-hair bg-surface-raised rounded-3xl border p-7 sm:p-9"
+      className="border-border-hair bg-surface-raised flex h-full flex-col rounded-3xl border p-7 sm:p-9"
     >
       <motion.p
         {...reveal(0)}
@@ -34,7 +34,7 @@ export function CompositeSignal({ composite }: { composite: CompositeSummary }) 
         Your calm summary
       </motion.p>
 
-      <div className="mt-6 flex flex-col items-center gap-7 sm:flex-row sm:gap-9">
+      <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-7 sm:flex-row sm:gap-9">
         <motion.div {...reveal(0.1)}>
           <CalmRing
             proportion={composite.proportionInRange}
@@ -57,9 +57,8 @@ export function CompositeSignal({ composite }: { composite: CompositeSummary }) 
         {...reveal(0.46)}
         className="border-border-hair text-ink-subtle mt-7 border-t pt-5 text-xs leading-relaxed"
       >
-        Based on {composite.enteredCount} {composite.enteredCount === 1 ? "value" : "values"} you
-        entered · guideline set {composite.guidelineVersion}. This is an educational summary of how
-        many values fall within guideline ranges — not a risk score or a diagnosis.
+        An educational summary of how many of your values fall within guideline ranges — not a risk
+        score or a diagnosis.
       </motion.p>
     </section>
   );
