@@ -7,7 +7,7 @@ import { FLAGS } from "@/lib/config/flags";
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-border-hair bg-surface mt-24 border-t">
+    <footer className="border-border-hair bg-surface mt-24 border-t print:hidden">
       <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm space-y-3">
@@ -26,6 +26,14 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
+                  href="/biomarkers"
+                  className="text-ink-muted hover:text-accent-strong transition-colors"
+                >
+                  Biomarker library
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/assessment"
                   className="text-ink-muted hover:text-accent-strong transition-colors"
                 >
@@ -33,7 +41,7 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li className="text-ink-subtle pt-1 text-xs">
-                Accounts, saved history &amp; AI explanations — coming soon
+                Accounts &amp; saved history — coming soon
               </li>
             </ul>
           </nav>

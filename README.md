@@ -236,9 +236,17 @@ Everything below is scaffolded and one change away from active:
 - **Auth** — the `proxy.ts` session refresh is in place; add the login/signup UX
   and decide gating (sensible default: assessment is free + anonymous, saving
   requires an account).
-- **AI explanation** — the reserved, inactive slot is
-  `components/results/ai-explanation-slot.tsx`; wire Claude Sonnet with the
-  hard guardrails in build-plan §7.3 and a deterministic fallback.
+- **AI explanation — LIVE (Phase 2.3).** `app/api/explain/route.ts` calls Claude
+  Sonnet server-side with a strict guardrail system prompt (prompt-cached) and
+  scans output before display (`lib/ai/guardrails.ts`); on any failure the slot
+  renders the deterministic walkthrough (`lib/ai/walkthrough.ts`). Activate by
+  setting `ANTHROPIC_API_KEY` (and set a spend cap in the Anthropic Console);
+  without the key the deterministic walkthrough renders — never an error.
+- **Biomarker library** — `/biomarkers`: a static, fully-sourced reference of
+  every marker with visual guideline range bars, rendered straight from the
+  rules-engine config.
+- **Doctor print report** — the "Print summary" button on results renders a
+  print-only physician-facing table (`components/results/print-report.tsx`).
 - **Payments** — Stripe, Phase 3.
 
 ---

@@ -10,7 +10,8 @@ import type {
 import { isSexBands } from "./types";
 import { BIOMARKERS, BIOMARKER_ORDER } from "./guidelines";
 
-function resolveBands(bands: BandSet, sex?: Sex): Band[] {
+/** Resolve the band set for a sex (exported for the band visualizations). */
+export function resolveBands(bands: BandSet, sex?: Sex): Band[] {
   if (!isSexBands(bands)) return bands;
   if (sex === "male") return bands.male;
   if (sex === "female") return bands.female;

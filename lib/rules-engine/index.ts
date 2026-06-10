@@ -27,7 +27,7 @@ export type {
 export { isSexBands } from "./types";
 
 export { GUIDELINE_VERSION } from "./version";
-export { categorizeBiomarker, categorizeAll } from "./categorize";
+export { categorizeBiomarker, categorizeAll, resolveBands } from "./categorize";
 export { computeComposite } from "./composite";
 export { assess, type Assessment } from "./assess";
 
