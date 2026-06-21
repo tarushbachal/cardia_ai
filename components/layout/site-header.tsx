@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Wordmark } from "./wordmark";
 import { Button } from "@/components/ui/button";
+import { HeaderAuth } from "./header-auth";
 
-/** Quiet, sticky header. Calm, never a nav bar competing with the content. */
+/** Quiet, sticky header. */
 export function SiteHeader() {
   return (
     <header className="border-border-hair/70 bg-canvas/80 sticky top-0 z-40 border-b backdrop-blur-md print:hidden">
@@ -21,6 +22,10 @@ export function SiteHeader() {
           <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
             <Link href="/biomarkers">Library</Link>
           </Button>
+          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
+            <Link href="/pricing">Pricing</Link>
+          </Button>
+          <HeaderAuth />
           <Button asChild size="sm">
             <Link href="/assessment">Start</Link>
           </Button>

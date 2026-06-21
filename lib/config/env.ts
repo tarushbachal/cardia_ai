@@ -35,3 +35,38 @@ export function requireServiceRoleKey(): string {
   }
   return key;
 }
+
+// ── Stripe ───────────────────────────────────────────────────────────────────
+
+/** True when billing is fully configured (publishable + secret keys present). */
+export function hasStripeConfig(): boolean {
+  return Boolean(
+    process.env.STRIPE_SECRET_KEY && process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+  );
+}
+
+/** Server-only. The Stripe secret key. */
+export function requireStripeSecretKey(): string {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error("STRIPE_SECRET_KEY is not set (server-only).");
+  return key;
+}
+
+/** Server-only. The Stripe webhook signing secret. */
+export function requireStripeWebhookSecret(): string {
+  const key = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!key) throw new Error("STRIPE_WEBHOOK_SECRET is not set (server-only).");
+  return key;
+}
+
+/** Server-only. The Stripe price id for a billing interval. */
+export function requireStripePriceId(interval: "monthly" | "yearly"): string {
+  const id =
+    interval === "monthly" ? process.env.STRIPE_PRICE_MONTHLY : process.env.STRIPE_PRICE_YEARLY;
+  if (!id) {
+    throw new Error(
+      `Stripe ${interval} price id is not set (run scripts/stripe-setup.ts, then set STRIPE_PRICE_${interval === "monthly" ? "MONTHLY" : "YEARLY"}).`,
+    );
+  }
+  return id;
+}
