@@ -44,7 +44,7 @@ export function MeasurementField({
             id={id}
             inputMode="decimal"
             autoComplete="off"
-            placeholder="—"
+            placeholder=""
             value={value}
             onChange={(e) => onChange(e.target.value)}
             onBlur={onBlur}

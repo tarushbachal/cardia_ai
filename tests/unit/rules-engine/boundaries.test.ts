@@ -43,13 +43,13 @@ const CASES: Record<Exclude<BiomarkerKey, "hdl">, Case[]> = {
     { value: 89, tier: "optimal", label: "Within desirable range" },
     { value: 90, tier: "borderline", label: "Borderline" },
     { value: 129, tier: "borderline", label: "Borderline" },
-    { value: 130, tier: "attention", label: "At or above the risk-enhancing threshold" },
+    { value: 130, tier: "attention", label: "At or above the risk enhancing threshold" },
   ],
   lpa: [
-    { value: 29, tier: "optimal", label: "Lower-risk range" },
+    { value: 29, tier: "optimal", label: "Lower risk range" },
     { value: 30, tier: "borderline", label: "Grey zone" },
     { value: 49, tier: "borderline", label: "Grey zone" },
-    { value: 50, tier: "attention", label: "Risk-modifying range" },
+    { value: 50, tier: "attention", label: "Risk modifying range" },
   ],
   hsCRP: [
     { value: 0.9, tier: "optimal", label: "Lower relative risk" },

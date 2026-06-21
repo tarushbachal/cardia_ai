@@ -17,14 +17,14 @@ export default function HomePage() {
           <div className="max-w-xl">
             <p className="border-border-hair bg-surface text-ink-muted inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide">
               <span className="bg-accent size-1.5 rounded-full" aria-hidden="true" />
-              Clinical-grade cardiovascular reference
+              Clinical grade cardiovascular reference
             </p>
             <h1 className="text-ink mt-6 text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
               Master your heart health with clinical precision.
             </h1>
             <p className="text-ink-muted mt-6 text-lg leading-relaxed text-pretty">
               Enter your lab values and Cardia measures every one against current clinical
-              guidelines — categorized, flagged, and traced to the exact published source. The
+              guidelines, categorized, flagged, and traced to the exact published source. The
               standard a cardiology clinic works to, made legible.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -45,7 +45,7 @@ export default function HomePage() {
               </div>
               <div className="inline-flex items-center gap-2">
                 <FileSearch className="text-accent-strong size-4" aria-hidden="true" />
-                Private by default — you choose what to share
+                Private by default, you choose what to share
               </div>
             </dl>
           </div>
@@ -60,7 +60,7 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <h2 className="text-ink text-3xl sm:text-4xl">How Cardia works.</h2>
             <p className="text-ink-muted mt-4 text-lg leading-relaxed">
-              A rigorous, transparent assessment — every value measured against a named clinical
+              A rigorous, transparent assessment, every value measured against a named clinical
               guideline, with the source one tap away.
             </p>
           </div>
@@ -69,13 +69,13 @@ export default function HomePage() {
               n={1}
               icon={<PenLine aria-hidden="true" />}
               title="Enter your values"
-              body="Your latest labs and a little context. Enter only what you have — every marker is optional."
+              body="Your latest labs and a little context. Enter only what you have, every marker is optional."
             />
             <HowStep
               n={2}
               icon={<ListChecks aria-hidden="true" />}
               title="See what's flagged"
-              body="Cardia leads with the values outside guideline ranges, assessed against current standards — then shows the full picture."
+              body="Cardia leads with the values outside guideline ranges, assessed against current standards, then shows the full picture."
             />
             <HowStep
               n={3}
@@ -93,7 +93,7 @@ export default function HomePage() {
           <div className="bg-hero overflow-hidden rounded-3xl px-6 py-14 sm:px-12">
             <div className="max-w-2xl">
               <h2 className="text-paper text-3xl sm:text-4xl">
-                Built on published medicine — not a model&rsquo;s guess.
+                Built on published medicine, not a model&rsquo;s guess.
               </h2>
               <p className="text-paper-muted mt-4 text-lg leading-relaxed">
                 There is no black-box risk score here. Cardia categorizes each value against current
@@ -106,12 +106,12 @@ export default function HomePage() {
                 body="Not “guidelines say this is high,” but the named, dated guideline and a direct link to it."
               />
               <DiffPoint
-                title="Outside-range first"
-                body="Cardia leads with the values that need attention — clearly flagged and clinically framed, never buried."
+                title="Flagged values first"
+                body="Cardia leads with the values that need attention, clearly flagged and clinically framed, never buried."
               />
               <DiffPoint
                 title="Private by default"
-                body="Your numbers stay in your browser. Sharing an anonymized copy for research is an explicit opt-in — never the default."
+                body="Your numbers stay in your browser. Sharing an anonymized copy for research is an explicit opt in, never the default."
               />
             </div>
             <div className="border-paper-muted/20 mt-12 flex flex-col items-start gap-5 border-t pt-9 sm:flex-row sm:items-center sm:justify-between">
@@ -170,10 +170,10 @@ function DiffPoint({ title, body }: { title: string; body: string }) {
   );
 }
 
-/** Illustrative, clearly-labeled preview of a result — never a real score. */
+/** Illustrative, clearly-labeled preview of a result, never a real score. */
 function HeroSignalPreview() {
   const rows = [
-    { label: "LDL-C", value: "96 mg/dL", tone: "optimal", cat: "Within range" },
+    { label: "LDL", value: "96 mg/dL", tone: "optimal", cat: "Within range" },
     { label: "Blood pressure", value: "142 / 90", tone: "elevated", cat: "Stage 2" },
     { label: "HbA1c", value: "6.1 %", tone: "borderline", cat: "Prediabetes range" },
   ] as const;

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 
 /**
- * The composite "signal" — a gentle settling-in, never a slot-machine spin or a
+ * The composite "signal", a gentle settling-in, never a slot-machine spin or a
  * danger gauge (§3.4). Fill shows the share of entered values within range; the
  * stroke stays a calm sage regardless, so the result never reads as an alarm.
  */

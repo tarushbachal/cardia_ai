@@ -9,7 +9,7 @@ const TIER_LABEL: Record<SeverityTier, string> = {
 };
 
 /**
- * At-a-glance tier breakdown beside the composite signal — the dashboard's
+ * At-a-glance tier breakdown beside the composite signal, the dashboard's
  * second summary tile. Ordered outside-range first.
  */
 export function ResultsSnapshot({ composite }: { composite: CompositeSummary }) {

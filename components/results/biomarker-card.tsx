@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils";
 import { BIOMARKERS, resolveBands, type BiomarkerResult, type Sex } from "@/lib/rules-engine";
 
 /**
- * Layer 2 unit (§3.5): a compact, grid-friendly card — name + value + calm
- * category, expandable to the plain-language note, a visual of where the value
+ * Layer 2 unit (§3.5): a compact, grid-friendly card, name + value + calm
+ * category, expandable to the plain language note, a visual of where the value
  * sits across the guideline bands, and the source guideline.
  */
 export function BiomarkerCard({ result, sex }: { result: BiomarkerResult; sex?: Sex }) {

@@ -6,9 +6,9 @@ import { Switch } from "@/components/ui/switch";
 import { isLocalPersistEnabled, setLocalPersistEnabled } from "@/lib/persistence/assessment-store";
 
 /**
- * Privacy-forward, opt-in "stays on your device" persistence (§6.1, §11).
+ * Privacy-forward, opt in "stays on your device" persistence (§6.1, §11).
  * Off by default (session-only). When on, the assessment is mirrored to
- * localStorage — still entirely on the device, never sent to a server.
+ * localStorage, still entirely on the device, never sent to a server.
  */
 export function PersistenceToggle() {
   const [state, setState] = useState({ mounted: false, enabled: false });
@@ -34,8 +34,8 @@ export function PersistenceToggle() {
           <p className="text-ink text-sm font-medium">Keep this on my device</p>
           <p className="text-ink-muted mt-1 text-sm leading-relaxed">
             {on
-              ? "Saved to this browser only — it’ll be here when you come back."
-              : "Off — your assessment clears when you close this tab."}
+              ? "Saved to this browser only, it’ll be here when you come back."
+              : "Off, your assessment clears when you close this tab."}
           </p>
         </div>
       </div>

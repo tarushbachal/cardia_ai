@@ -73,7 +73,7 @@ export function ResultsView() {
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
-      {/* Interactive dashboard — replaced by PrintReport in print. */}
+      {/* Interactive dashboard, replaced by PrintReport in print. */}
       <div className="print:hidden">
         <div className="flex items-center justify-between gap-4">
           <p className="text-ink-subtle text-sm font-medium">Your results</p>
@@ -89,12 +89,12 @@ export function ResultsView() {
           </div>
         </div>
 
-        {/* Priority findings — lead with values outside guideline range */}
+        {/* Priority findings, lead with values outside guideline range */}
         <div className="mt-6">
           <PriorityFindings results={state.results} />
         </div>
 
-        {/* Summary band — composite signal + at-a-glance snapshot + AI walkthrough */}
+        {/* Summary band, composite signal + at-a-glance snapshot + AI walkthrough */}
         <div className="mt-5 grid gap-5 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <CompositeSignal composite={state.composite} />
@@ -109,7 +109,7 @@ export function ResultsView() {
           </div>
         </div>
 
-        {/* Detail — per-biomarker multi-column grid */}
+        {/* Detail, per-biomarker multi-column grid */}
         <div className="mt-10">
           <BiomarkerGrid results={state.results} sex={state.input.sex} />
         </div>

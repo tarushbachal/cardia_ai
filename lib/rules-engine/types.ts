@@ -1,8 +1,8 @@
 /**
- * Clinical rules engine — type system.
+ * Clinical rules engine, type system.
  *
  * Pure data + types, zero UI/runtime dependencies. The engine takes biomarker
- * values plus light context and returns calm, fully-sourced categorizations and
+ * values plus light context and returns calm, fully sourced categorizations and
  * an educational composite summary. It never predicts, diagnoses, or directs
  * treatment (see lib/content/regulatory.ts and §1.5/§4 of the build plan).
  */
@@ -34,7 +34,7 @@ export type Unit = "mg/dL" | "%" | "mg/L" | "mmHg" | "kg/m²";
  */
 export type SeverityTier = "optimal" | "borderline" | "attention";
 
-/** A citable guideline — stored as data so the UI can surface it (§4.1). */
+/** A citable guideline, stored as data so the UI can surface it (§4.1). */
 export interface GuidelineSource {
   /** Full guideline/statement name. */
   name: string;
@@ -59,13 +59,13 @@ export interface Band {
   tier: SeverityTier;
   /** Calm, precise category wording shown to the user. */
   label: string;
-  /** Plain-language note: what the guideline says; routes to a physician; never a medication directive. */
+  /** Plain language note: what the guideline says; routes to a physician; never a medication directive. */
   note: string;
   /** Optional per-band citation override (defaults to the definition's primarySource). */
   source?: GuidelineSource;
 }
 
-/** Sex-specific band sets (e.g., HDL-C). `unknown` is the neutral fallback. */
+/** Sex-specific band sets (e.g., HDL). `unknown` is the neutral fallback. */
 export interface SexBands {
   male: Band[];
   female: Band[];
@@ -79,7 +79,7 @@ export interface BiomarkerDefinition {
   group: BiomarkerGroup;
   /** Full label, e.g. "LDL cholesterol". */
   label: string;
-  /** Compact label for dense UI, e.g. "LDL-C". */
+  /** Compact label for dense UI, e.g. "LDL". */
   shortLabel: string;
   unit: Unit;
   /** One plain sentence: what this marker is. */
@@ -93,7 +93,7 @@ export interface BiomarkerDefinition {
   bands: BandSet;
   /** The headline citation shown for this marker. */
   primarySource: GuidelineSource;
-  /** Additional context citations (e.g. current-guideline goals for LDL-C). */
+  /** Additional context citations (e.g. current-guideline goals for LDL). */
   additionalSources?: GuidelineSource[];
 }
 
@@ -138,13 +138,13 @@ export interface CompositeSummary {
   enteredCount: number;
   withinRangeCount: number;
   byTier: Record<SeverityTier, number>;
-  /** Fraction of entered markers within the optimal range, 0–1 (drives the calm ring). */
+  /** Fraction of entered markers within the optimal range, 0 to 1 (drives the calm ring). */
   proportionInRange: number;
   /** Calm, severity-aware signal. NOT a risk prediction or diagnosis (§1.5). */
   signal: CompositeSignal;
   /** Short calm label, e.g. "Mostly within guideline ranges". */
   signalLabel: string;
-  /** One or two plain-language sentences framing the summary. */
+  /** One or two plain language sentences framing the summary. */
   headline: string;
   /** Guideline configuration version that produced this summary (§4.5). */
   guidelineVersion: string;

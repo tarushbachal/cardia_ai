@@ -8,7 +8,7 @@ import { getEncryptionKey } from "./key";
  *
  *   v1:<base64url iv>:<base64url tag>:<base64url ciphertext>
  *
- * Server-only — `node:crypto` is never bundled into the client.
+ * Server-only, `node:crypto` is never bundled into the client.
  */
 
 const ALGORITHM = "aes-256-gcm";

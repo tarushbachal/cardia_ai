@@ -38,7 +38,7 @@ test.describe("Cardia AI — critical flow", () => {
     // Results: calm summary first
     await expect(page).toHaveURL(/\/results/);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByText(/within guideline-recommended ranges/i)).toBeVisible();
+    await expect(page.getByText(/within guideline ranges/i)).toBeVisible();
     // Reserved (inactive) AI slot is present
     const aiSlot = page.getByRole("region", { name: /plain-language explanation/i });
     await expect(aiSlot).toBeVisible();
@@ -70,7 +70,7 @@ test.describe("Cardia AI — critical flow", () => {
     });
     await page.goto("/results");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByText(/within guideline-recommended ranges/i)).toBeVisible();
+    await expect(page.getByText(/within guideline ranges/i)).toBeVisible();
     await context.close();
   });
 

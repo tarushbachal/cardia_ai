@@ -4,7 +4,7 @@ import { biomarkerValuesSchema, contextSchema } from "./assessment";
 /**
  * Boundary schema for the anonymous capture endpoint. Reuses the same context +
  * value validation as the assessment so the server never trusts client-computed
- * results — it re-derives them from these validated inputs.
+ * results, it re-derives them from these validated inputs.
  */
 
 const UUID = z

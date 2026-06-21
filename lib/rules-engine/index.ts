@@ -1,8 +1,8 @@
 /**
- * Cardia AI clinical rules engine — public API.
+ * Cardia clinical rules engine, public API.
  *
  * Pure, typed, fully-tested, zero UI dependencies. Given biomarker values and
- * light context it returns calm, fully-sourced categorizations plus an
+ * light context it returns calm, fully sourced categorizations plus an
  * educational composite summary. It does not predict, diagnose, or direct
  * treatment. Every threshold is traceable to a cited guideline (see
  * ./VERIFICATION.md).

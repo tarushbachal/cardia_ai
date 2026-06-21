@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "Biomarker library",
   description:
-    "A fully-sourced clinical reference for cardiovascular biomarkers — every range traced to a named, dated guideline.",
+    "A fully sourced clinical reference for cardiovascular biomarkers, every range traced to a named, dated guideline.",
 };
 
 /**
@@ -34,7 +34,7 @@ export default function BiomarkersPage() {
       <header className="max-w-2xl">
         <h1 className="text-ink text-4xl sm:text-5xl">The biomarker library</h1>
         <p className="text-ink-muted mt-5 text-lg leading-relaxed">
-          Every range Cardia AI references, in one place — each band traced to a named, dated
+          Every range Cardia references, in one place, each band traced to a named, dated
           clinical guideline. Educational reference, not medical advice; lab report ranges can
           differ by laboratory and assay.
         </p>
@@ -118,7 +118,7 @@ function BiomarkerEntry({ def }: { def: BiomarkerDefinition }) {
                       ? `< ${band.max}`
                       : band.max === undefined
                         ? `≥ ${band.min}`
-                        : `${band.min} – ${band.max}`}
+                        : `${band.min} to ${band.max}`}
                   </span>
                   <span className="text-ink-muted">{band.label}</span>
                 </li>

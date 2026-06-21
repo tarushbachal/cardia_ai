@@ -39,7 +39,7 @@ export function setLocalPersistEnabled(enabled: boolean): void {
       window.localStorage.removeItem(DATA_KEY);
     }
   } catch {
-    /* storage unavailable — ignore */
+    /* storage unavailable, ignore */
   }
 }
 
@@ -53,7 +53,7 @@ export function saveAssessment(data: ParsedAssessment): void {
     window.sessionStorage.setItem(DATA_KEY, payload);
     if (isLocalPersistEnabled()) window.localStorage.setItem(DATA_KEY, payload);
   } catch {
-    /* storage unavailable — ignore */
+    /* storage unavailable, ignore */
   }
 }
 

@@ -10,7 +10,7 @@ import type {
 /**
  * De-identified, non-sensitive projection of an assessment, stored in PLAINTEXT
  * alongside the encrypted payload so aggregate SQL analytics work without ever
- * decrypting (§5.1). Carries only categories — never a raw value, never an exact
+ * decrypting (§5.1). Carries only categories, never a raw value, never an exact
  * age. (Phase 2.1 "hybrid" decision.)
  */
 export interface DeidentifiedFields {
@@ -19,7 +19,7 @@ export interface DeidentifiedFields {
   markersEntered: number;
   withinRange: number;
   compositeSignal: CompositeSignal;
-  /** { [biomarkerKey]: tier } — categories only, no numbers. */
+  /** { [biomarkerKey]: tier }, categories only, no numbers. */
   tiers: Record<string, SeverityTier>;
 }
 

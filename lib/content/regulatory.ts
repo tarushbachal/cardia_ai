@@ -16,7 +16,7 @@ export const REG = {
 
   /** Full disclaimer, for onboarding and the results screen. */
   disclaimerFull:
-    "Cardia provides educational information that references published clinical guidelines. It does not diagnose, treat, or provide medical advice, and it is not a substitute for professional care. Always discuss your results — and any decisions about medication or treatment — with your physician.",
+    "Cardia provides educational information that references published clinical guidelines. It does not diagnose, treat, or provide medical advice, and it is not a substitute for professional care. Always discuss your results, and any decisions about medication or treatment, with your physician.",
 
   /** General-wellness positioning (keeps us out of SaMD territory). */
   notADevice:
@@ -28,7 +28,7 @@ export const REG = {
 
   /** The trust differentiator. */
   sourcesNote:
-    "Every category is traceable to a specific, dated clinical guideline — linked, never guessed.",
+    "Every category is traceable to a specific, dated clinical guideline, linked, never guessed.",
 
   /** Privacy posture: nothing is shared unless the user explicitly opts in. */
   privacyShort: "Your numbers stay in your browser. You choose whether to share an anonymized copy.",

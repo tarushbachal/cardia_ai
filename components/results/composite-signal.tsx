@@ -6,7 +6,7 @@ import type { CompositeSummary } from "@/lib/rules-engine";
 
 /**
  * Layer 1 of the progressive-disclosure results (§3.5): one calm composite signal
- * and a sentence of plain-language framing. One gentle, staggered reveal — never
+ * and a sentence of plain language framing. One gentle, staggered reveal, never
  * a countdown or a slot-machine spin (§3.4). Reduced-motion renders instantly.
  */
 export function CompositeSignal({ composite }: { composite: CompositeSummary }) {
@@ -57,7 +57,7 @@ export function CompositeSignal({ composite }: { composite: CompositeSummary }) 
         {...reveal(0.46)}
         className="border-border-hair text-ink-subtle mt-7 border-t pt-5 text-xs leading-relaxed"
       >
-        An educational summary of how many of your values fall within guideline ranges — not a risk
+        An educational summary of how many of your values fall within guideline ranges, not a risk
         score or a diagnosis.
       </motion.p>
     </section>

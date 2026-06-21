@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import type { GuidelineSource } from "@/lib/rules-engine";
 
-/** Renders a guideline citation as a link — the core trust differentiator (§1.3). */
+/** Renders a guideline citation as a link, the core trust differentiator (§1.3). */
 export function SourceLink({ source }: { source: GuidelineSource }) {
   return (
     <a

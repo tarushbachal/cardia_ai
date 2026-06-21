@@ -14,7 +14,7 @@ export function ResultsEmptyState() {
       <h1 className="text-ink mt-6 text-3xl">No results yet</h1>
       <p className="text-ink-muted mt-3 text-base leading-relaxed">
         No assessment was found in this browser. Start an assessment to see your complete,
-        fully-sourced results.
+        fully sourced results.
       </p>
       <Button asChild size="lg" className="mt-7">
         <Link href="/assessment">Start your assessment</Link>

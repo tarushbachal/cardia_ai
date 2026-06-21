@@ -9,11 +9,11 @@ import { scanExplanation } from "@/lib/ai/guardrails";
 export const runtime = "nodejs";
 
 /**
- * AI explanation layer (§7.3) — the single highest-risk feature, so every
+ * AI explanation layer (§7.3), the single highest-risk feature, so every
  * safeguard is structural:
  * - Server-only: the API key never reaches the client.
  * - Closed-world input: the model sees ONLY rules-engine output (re-derived
- *   here from validated raw inputs — client categories are never trusted).
+ *   here from validated raw inputs, client categories are never trusted).
  * - Output is buffered and scanned BEFORE anything is returned; a violation
  *   discards it. The client always has the deterministic walkthrough as
  *   fallback, so every non-200 here degrades gracefully.

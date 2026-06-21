@@ -13,7 +13,7 @@ export const runtime = "nodejs";
 /**
  * Anonymous assessment capture (Phase 2.1). No auth. Called fire-and-forget from
  * the client via sendBeacon. Quietly no-ops (204) until Supabase + the encryption
- * key are configured. Never trusts client-computed results — re-derives them.
+ * key are configured. Never trusts client-computed results, re-derives them.
  */
 export async function POST(request: Request): Promise<NextResponse> {
   if (!isServerCaptureConfigured()) {

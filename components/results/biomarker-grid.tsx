@@ -6,7 +6,7 @@ import type { BiomarkerResult, Sex } from "@/lib/rules-engine";
 /**
  * Layer 2 (§3.5): per-biomarker detail as a calm multi-column grid, grouped by
  * status with "within range" first so the calm reads before anything else. Each
- * card expands to its plain-language note, a guideline range bar, and its
+ * card expands to its plain language note, a guideline range bar, and its
  * source. Collapses to one column on mobile.
  */
 export function BiomarkerGrid({ results, sex }: { results: BiomarkerResult[]; sex?: Sex }) {

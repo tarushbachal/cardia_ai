@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 /**
- * Button — follows the shadcn/ui pattern (Radix Slot + CVA) but is fully
+ * Button, follows the shadcn/ui pattern (Radix Slot + CVA) but is fully
  * restyled to the Warm Editorial system. Primary is deep-navy on paper; the
  * teal accent is reserved for the few moments that earn emphasis.
  */

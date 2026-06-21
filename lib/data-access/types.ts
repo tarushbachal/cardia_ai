@@ -11,7 +11,7 @@ import type {
  * a historical reading interpretable even after a guideline update.
  *
  * Data-model note: a JSONB snapshot is chosen over a normalized child table for
- * Phase 1 — it is simple, faithful, and stable across guideline-version changes.
+ * Phase 1, it is simple, faithful, and stable across guideline-version changes.
  * A normalized `biomarker_values` table is the documented Phase 2 option if trend
  * queries need it; until then a JSONB-path index suffices.
  */

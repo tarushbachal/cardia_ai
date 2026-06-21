@@ -42,7 +42,7 @@ export function AssessmentFlow() {
   const [values, setValues] = useState<ValueMap>(emptyValues);
   const [errors, setErrors] = useState<Partial<Record<BiomarkerKey, string>>>({});
   const [submitError, setSubmitError] = useState<string | undefined>();
-  const [shareData, setShareData] = useState(false); // data-sharing is opt-in, off by default
+  const [shareData, setShareData] = useState(false); // data-sharing is opt in, off by default
 
   const enteredCount = useMemo(
     () => Object.values(values).filter((v) => v.trim() !== "").length,
@@ -146,7 +146,7 @@ export function AssessmentFlow() {
       <header className="max-w-xl">
         <h1 className="text-ink text-3xl sm:text-4xl">Your assessment</h1>
         <p className="text-ink-muted mt-3 text-base leading-relaxed">
-          Enter the numbers you have — every field is optional. Your entries stay in your browser
+          Enter the numbers you have, every field is optional. Your entries stay in your browser
           unless you choose to share them.
         </p>
       </header>
@@ -206,11 +206,11 @@ export function AssessmentFlow() {
               <ShieldCheck className="text-accent-strong mt-0.5 size-4 shrink-0" aria-hidden="true" />
               <div>
                 <label htmlFor="share-consent" className="text-ink text-sm font-medium">
-                  Share my heart-health metrics to support Cardia&rsquo;s research
+                  Share my heart health metrics to support Cardia&rsquo;s research
                 </label>
                 <p className="text-ink-muted mt-1 text-sm leading-relaxed">
                   Off by default. Turn this on and an anonymized, encrypted copy of your values is
-                  shared with us — never linked to your name or identity. Leave it off and nothing is
+                  shared with us, never linked to your name or identity. Leave it off and nothing is
                   sent.
                 </p>
               </div>
@@ -219,7 +219,7 @@ export function AssessmentFlow() {
               id="share-consent"
               checked={shareData}
               onCheckedChange={setShareData}
-              aria-label="Share my anonymized heart-health metrics"
+              aria-label="Share my anonymized heart health metrics"
             />
           </div>
         ) : null}
@@ -255,7 +255,7 @@ export function AssessmentFlow() {
       <p className="text-ink-subtle mt-6 flex items-center justify-center gap-2 text-xs">
         <Lock className="size-3.5" aria-hidden="true" />
         {enteredCount === 0
-          ? "Stored in your browser — enter at least one value to see your results."
+          ? "Stored in your browser, enter at least one value to see your results."
           : `${enteredCount} ${enteredCount === 1 ? "value" : "values"} entered · stored in your browser unless you opt to share.`}
       </p>
     </div>
@@ -290,7 +290,7 @@ function ContextStep({
       <div>
         <h2 className="text-ink text-xl">About you</h2>
         <p className="text-ink-muted mt-2 text-sm leading-relaxed">
-          A little context lets us use the right reference ranges — for example, the low-HDL
+          A little context lets us use the right reference ranges, for example, the low HDL
           threshold differs by sex. All optional.
         </p>
       </div>
@@ -304,7 +304,7 @@ function ContextStep({
           id="ctx-age"
           inputMode="numeric"
           autoComplete="off"
-          placeholder="—"
+          placeholder=""
           value={ageStr}
           onChange={(e) => onAgeChange(e.target.value)}
           onBlur={onAgeBlur}
@@ -321,7 +321,7 @@ function ContextStep({
 
       <ChoiceField
         legend="Biological sex"
-        description="Used for sex-specific thresholds such as HDL-C."
+        description="Used for sex specific thresholds such as HDL."
         options={[
           { value: "female", label: "Female" },
           { value: "male", label: "Male" },

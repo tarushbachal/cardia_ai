@@ -3,10 +3,10 @@ import { GUIDELINE_VERSION } from "./version";
 
 /**
  * Educational composite summary (§4.4). This is explicitly a count of how many
- * entered values fall within guideline-recommended ranges, with a
+ * entered values fall within guideline ranges, with a
  * severity-aware signal. It is NEVER a clinical risk prediction or diagnosis
- * (§1.5). "Weighting" here means severity-awareness — an out-of-range value
- * weighs the signal more than a borderline one — not a hidden risk formula.
+ * (§1.5). "Weighting" here means severity-awareness, an out-of-range value
+ * weighs the signal more than a borderline one, not a hidden risk formula.
  */
 export function computeComposite(results: BiomarkerResult[]): CompositeSummary {
   const byTier: Record<SeverityTier, number> = {
@@ -63,7 +63,7 @@ function buildHeadline(
 
   const valuesWord = enteredCount === 1 ? "value" : "values";
   const verb = withinRangeCount === 1 ? "falls" : "fall";
-  const fact = `${withinRangeCount} of ${enteredCount} ${valuesWord} ${verb} within guideline-recommended ranges.`;
+  const fact = `${withinRangeCount} of ${enteredCount} ${valuesWord} ${verb} within guideline ranges.`;
 
   const framing: Record<CompositeSignal, string> = {
     steady:

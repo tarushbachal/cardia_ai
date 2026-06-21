@@ -26,8 +26,8 @@ export const GROUP_BLURBS: Record<BiomarkerGroup, string> = {
   lipids: "The fats and particles your cholesterol panel measures.",
   metabolic: "How your body is handling blood sugar.",
   "blood-pressure": "The pressure in your arteries, top and bottom numbers.",
-  inflammation: "A marker of low-grade inflammation, for context.",
-  body: "A simple height-and-weight screen.",
+  inflammation: "A marker of low grade inflammation, for context.",
+  body: "A simple height and weight screen.",
 };
 
 const UNSORTED: BiomarkerDefinition[] = [

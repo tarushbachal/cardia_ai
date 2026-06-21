@@ -40,7 +40,7 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li className="text-ink-subtle pt-1 text-xs">
-                Accounts &amp; saved history — coming soon
+                Accounts &amp; saved history, coming soon
               </li>
             </ul>
           </nav>

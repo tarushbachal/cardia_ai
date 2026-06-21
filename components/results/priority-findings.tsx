@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import type { BiomarkerResult } from "@/lib/rules-engine";
 
 /**
- * The lead panel on the results page — clinical practice leads with what is
+ * The lead panel on the results page, clinical practice leads with what is
  * abnormal, so this surfaces the values outside guideline range first
  * (attention before borderline), each with its value, category, and the
  * guideline note. When everything is within range it states that plainly.

@@ -61,7 +61,7 @@ const ageSchema = z.preprocess(
   z
     .number({ message: "Age must be a number." })
     .int({ message: "Age must be a whole number." })
-    .min(18, { message: "Cardia AI is for adults (18+)." })
+    .min(18, { message: "Cardia is for adults (18+)." })
     .max(120, { message: "Please enter a valid age." })
     .optional(),
 );

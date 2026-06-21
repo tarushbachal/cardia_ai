@@ -4,14 +4,14 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
-/** Display serif — authoritative, precise, trustworthy. */
+/** Display serif, authoritative, precise, trustworthy. */
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
 });
 
-/** Humanist body + data face — highly legible, great tabular figures. */
+/** Humanist body + data face, highly legible, great tabular figures. */
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-ibm-plex-sans",
@@ -21,11 +21,11 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Cardia — Master your heart health",
+    default: "Cardia: Master your heart health",
     template: "%s · Cardia",
   },
   description:
-    "Understand your cardiovascular biomarkers against current clinical guidelines. Every value categorized and traced to a named, dated source — educational information, not medical advice.",
+    "Understand your cardiovascular biomarkers against current clinical guidelines. Every value categorized and traced to a named, dated source, educational information, not medical advice.",
   applicationName: "Cardia",
   authors: [{ name: "Cardia" }],
   robots: { index: true, follow: true },

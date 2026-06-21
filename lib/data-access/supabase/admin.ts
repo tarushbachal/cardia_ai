@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Service-role Supabase client — bypasses RLS. Server-only, for trusted
+ * Service-role Supabase client, bypasses RLS. Server-only, for trusted
  * background/admin work in later phases. Never use to serve user requests where
  * RLS should apply; use the server client for that.
  */

@@ -22,7 +22,7 @@ function hashInput(input: ParsedAssessment, version: string): string {
  * The AI explanation layer (§7.3), live. Requests a guardrailed, server-side
  * Claude Sonnet walkthrough; on ANY failure (unconfigured, timeout, output-scan
  * violation) it renders the deterministic walkthrough built from the rules
- * engine's own notes — the user always gets a coherent, compliant explanation.
+ * engine's own notes, the user always gets a coherent, compliant explanation.
  */
 export function AiExplanationSlot({
   input,
@@ -64,13 +64,13 @@ export function AiExplanationSlot({
             try {
               sessionStorage.setItem(CACHE_KEY, JSON.stringify({ hash, text, source: "ai" }));
             } catch {
-              // storage unavailable — fine
+              // storage unavailable, fine
             }
             return;
           }
         }
       } catch {
-        // network/timeout — fall through to deterministic
+        // network/timeout, fall through to deterministic
       }
       if (!cancelled) {
         setState({ status: "ready", text: buildWalkthrough(results, composite), source: "local" });
@@ -97,7 +97,7 @@ export function AiExplanationSlot({
         </span>
         <div className="min-w-0 flex-1">
           <h3 id="ai-slot-title" className="text-ink text-sm font-semibold">
-            Plain-language walkthrough
+            Plain language walkthrough
           </h3>
 
           {state.status === "loading" ? (
@@ -113,7 +113,7 @@ export function AiExplanationSlot({
               </p>
               <p className="text-ink-subtle border-border-hair mt-3 border-t pt-2.5 text-[11px] leading-relaxed">
                 {state.source === "ai"
-                  ? "AI-generated · references the cited guidelines · not medical advice."
+                  ? "AI generated · references the cited guidelines · not medical advice."
                   : "Generated from your results and the cited guidelines · not medical advice."}
               </p>
             </>

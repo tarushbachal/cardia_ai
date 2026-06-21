@@ -23,7 +23,7 @@ export const TIER_META: Record<
     ringVar: "var(--optimal)",
   },
   borderline: {
-    groupLabel: "Borderline — monitor",
+    groupLabel: "Borderline, monitor",
     dotClass: "bg-borderline",
     chipClass: "bg-borderline-soft text-borderline-strong",
     softClass: "bg-borderline-soft",
@@ -31,7 +31,7 @@ export const TIER_META: Record<
     ringVar: "var(--borderline)",
   },
   attention: {
-    groupLabel: "Outside guideline range — discuss with your physician",
+    groupLabel: "Outside guideline range, discuss with your physician",
     dotClass: "bg-elevated",
     chipClass: "bg-elevated-soft text-elevated-strong",
     softClass: "bg-elevated-soft",
@@ -40,5 +40,5 @@ export const TIER_META: Record<
   },
 };
 
-/** Order tiers so values outside range read first — lead with what needs attention. */
+/** Order tiers so values outside range read first, lead with what needs attention. */
 export const TIER_DISPLAY_ORDER: SeverityTier[] = ["attention", "borderline", "optimal"];
