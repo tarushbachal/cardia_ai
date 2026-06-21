@@ -4,7 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
-/** Editorial display serif — warm, characterful, trustworthy. */
+/** Display serif — authoritative, precise, trustworthy. */
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
@@ -21,18 +21,18 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Cardia AI — Understand your heart-health numbers, calmly",
-    template: "%s · Cardia AI",
+    default: "Cardia — Master your heart health",
+    template: "%s · Cardia",
   },
   description:
-    "A calm, guideline-sourced way to understand your cardiovascular biomarkers. Educational information referencing published clinical guidelines — not medical advice.",
-  applicationName: "Cardia AI",
-  authors: [{ name: "Cardia AI" }],
+    "Understand your cardiovascular biomarkers against current clinical guidelines. Every value categorized and traced to a named, dated source — educational information, not medical advice.",
+  applicationName: "Cardia",
+  authors: [{ name: "Cardia" }],
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7f5f0",
+  themeColor: "#112430",
   width: "device-width",
   initialScale: 1,
 };

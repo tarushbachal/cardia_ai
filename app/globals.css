@@ -1,56 +1,57 @@
 @import "tailwindcss";
 
-/* Optional class-based dark mode hook (Phase 1 ships light-first). */
+/* Optional class-based dark mode hook (light-first). */
 @custom-variant dark (&:is(.dark *));
 
 /*
   ───────────────────────────────────────────────────────────────────────────
-  CARDIA AI — "Warm Editorial" design tokens.
-  Calm, trustworthy, editorial, clinical-but-human. No alarmist reds/neons.
-  Raw palette lives in :root so it stays themeable; the @theme inline block
-  maps it onto utilities + the shadcn semantic contract. Text variants are
-  tuned to clear WCAG AA against their intended backgrounds.
+  CARDIA — clinical design tokens.
+  Professional, precise, authoritative — the visual language of a cardiology
+  clinic, not a consumer wellness app. Clean cool surfaces, a confident clinical
+  blue, and clear status colors (a real red for out-of-range values). Raw
+  palette lives in :root so it stays themeable; the @theme inline block maps it
+  onto utilities + the shadcn semantic contract. Text variants meet WCAG AA.
   ───────────────────────────────────────────────────────────────────────────
 */
 :root {
-  /* Surfaces — warm paper, not stark white */
-  --canvas: #f7f5f0; /* page background */
-  --surface: #fcfaf6; /* subtle raised */
+  /* Surfaces — clean, cool, clinical */
+  --canvas: #f3f5f7; /* page background */
+  --surface: #f9fafb; /* subtle raised */
   --surface-raised: #ffffff; /* cards */
-  --hero: #14242f; /* deep navy hero/anchors */
+  --hero: #112430; /* deep navy hero/anchors */
 
-  /* Ink — deep desaturated navy, never pure black */
-  --ink: #14242f; /* primary text + headings */
-  --ink-muted: #46555d; /* secondary text (AA on canvas) */
-  --ink-subtle: #5c6a72; /* tertiary / labels (AA on canvas) */
+  /* Ink — deep navy, never pure black */
+  --ink: #112430; /* primary text + headings */
+  --ink-muted: #44535c; /* secondary text (AA on canvas) */
+  --ink-subtle: #59666f; /* tertiary / labels (AA on canvas) */
 
   /* Hairlines */
-  --border-hair: #e6e1d7;
-  --border-strong: #d8d1c4;
+  --border-hair: #e2e8ec;
+  --border-strong: #ccd5dc;
 
   /* On-dark (text/elements over the navy hero) */
-  --paper: #f4f2ec;
-  --paper-muted: #aec0c6;
+  --paper: #f3f6f8;
+  --paper-muted: #a6bac5;
 
-  /* Accent — one considered teal, used sparingly */
-  --accent: #2e8b83; /* fills, rings, large text */
-  --accent-strong: #1f6e66; /* small text / links on light (AA) */
-  --accent-soft: #e2efec; /* tinted hover / selected bg */
-  --accent-on-dark: #5bb5ab; /* accent over navy */
+  /* Accent — a confident clinical blue */
+  --accent: #2a6ebb; /* fills, rings, large text */
+  --accent-strong: #1f5694; /* small text / links on light (AA) */
+  --accent-soft: #e7eff8; /* tinted hover / selected bg */
+  --accent-on-dark: #79afe8; /* accent over navy */
 
-  /* Status — muted + mature. base=dot/ring, strong=text (AA), soft=tint bg */
-  --optimal: #6fa287;
-  --optimal-strong: #3e6b54;
-  --optimal-soft: #e7efe8;
-  --borderline: #c8943b;
+  /* Status — clinical. base=dot/ring, strong=text (AA), soft=tint bg */
+  --optimal: #4f9d77;
+  --optimal-strong: #2f7150;
+  --optimal-soft: #e7f2ec;
+  --borderline: #cf9a3a;
   --borderline-strong: #8a6320;
-  --borderline-soft: #f5ecd9;
-  --elevated: #b5694f;
-  --elevated-strong: #8c4a34;
-  --elevated-soft: #f3e4dc;
+  --borderline-soft: #f6edd7;
+  --elevated: #d04a38; /* a real, clinical red for out-of-range values */
+  --elevated-strong: #9e2f22;
+  --elevated-soft: #f8e5e1;
 
-  /* Radius scale */
-  --radius: 0.875rem;
+  /* Radius scale — crisper than a consumer app */
+  --radius: 0.625rem;
 
   /* ── shadcn semantic contract → mapped onto the palette ───────────────── */
   --background: var(--canvas);
@@ -59,11 +60,11 @@
   --card-foreground: var(--ink);
   --popover: var(--surface-raised);
   --popover-foreground: var(--ink);
-  --primary: var(--ink); /* deep-navy primary buttons on paper */
+  --primary: var(--ink); /* deep-navy primary buttons */
   --primary-foreground: var(--paper);
-  --secondary: #efeae0;
+  --secondary: #e9edf1;
   --secondary-foreground: var(--ink);
-  --muted: #efeae0;
+  --muted: #e9edf1;
   --muted-foreground: var(--ink-muted);
   --accent-ui: var(--accent-soft); /* shadcn "accent" = hover/active surface */
   --accent-ui-foreground: var(--accent-strong);
@@ -127,13 +128,13 @@
   --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* Radii */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 10px);
 
-  /* Calm, non-bouncy disclosure animations */
+  /* Measured, non-bouncy disclosure animations */
   --animate-accordion-down: accordion-down 0.24s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-collapse-down: collapse-down 0.24s ease-out;
@@ -220,8 +221,7 @@
   }
 }
 
-/* Honour reduced-motion globally — doubly important for a health-anxiety-aware
-   product. JS (Motion) reveals are additionally gated via useReducedMotion(). */
+/* Honour reduced-motion globally. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

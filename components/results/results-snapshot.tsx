@@ -4,13 +4,13 @@ import type { CompositeSummary, SeverityTier } from "@/lib/rules-engine";
 
 const TIER_LABEL: Record<SeverityTier, string> = {
   optimal: "Within range",
-  borderline: "To look at",
-  attention: "To discuss",
+  borderline: "Borderline",
+  attention: "Outside range",
 };
 
 /**
  * At-a-glance tier breakdown beside the composite signal — the dashboard's
- * second summary tile. Calm counts, never an alarm.
+ * second summary tile. Ordered outside-range first.
  */
 export function ResultsSnapshot({ composite }: { composite: CompositeSummary }) {
   return (

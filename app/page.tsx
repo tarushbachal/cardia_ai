@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Layers, Lock, PenLine } from "lucide-react";
+import { ArrowRight, BookOpen, FileSearch, ListChecks, PenLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Disclaimer } from "@/components/layout/disclaimer";
 import { REG } from "@/lib/content/regulatory";
-import { FLAGS } from "@/lib/config/flags";
 
 export default function HomePage() {
   return (
@@ -18,15 +17,15 @@ export default function HomePage() {
           <div className="max-w-xl">
             <p className="border-border-hair bg-surface text-ink-muted inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide">
               <span className="bg-accent size-1.5 rounded-full" aria-hidden="true" />
-              Cardiovascular biomarkers, made calm
+              Clinical-grade cardiovascular reference
             </p>
             <h1 className="text-ink mt-6 text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
-              Understand your heart-health numbers, without the fear.
+              Master your heart health with clinical precision.
             </h1>
             <p className="text-ink-muted mt-6 text-lg leading-relaxed text-pretty">
-              Enter your lab values and Cardia AI shows you one calm, plain-language summary first —
-              then lets you open only the detail you want, each category traced to the exact
-              published guideline behind it.
+              Enter your lab values and Cardia measures every one against current clinical
+              guidelines — categorized, flagged, and traced to the exact published source. The
+              standard a cardiology clinic works to, made legible.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="pill">
@@ -36,7 +35,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button asChild size="pill" variant="outline">
-                <Link href="#how-it-works">See how it works</Link>
+                <Link href="/biomarkers">Explore the library</Link>
               </Button>
             </div>
             <dl className="text-ink-subtle mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
@@ -45,8 +44,8 @@ export default function HomePage() {
                 Sourced to published guidelines
               </div>
               <div className="inline-flex items-center gap-2">
-                <Lock className="text-accent-strong size-4" aria-hidden="true" />
-                {FLAGS.captureEnabled ? "Anonymous & encrypted" : "Nothing leaves your browser"}
+                <FileSearch className="text-accent-strong size-4" aria-hidden="true" />
+                Private by default — you choose what to share
               </div>
             </dl>
           </div>
@@ -59,31 +58,30 @@ export default function HomePage() {
       <section id="how-it-works" className="scroll-mt-20">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
           <div className="max-w-2xl">
-            <h2 className="text-ink text-3xl sm:text-4xl">Calm by design.</h2>
+            <h2 className="text-ink text-3xl sm:text-4xl">How Cardia works.</h2>
             <p className="text-ink-muted mt-4 text-lg leading-relaxed">
-              Most people avoid their cardiovascular numbers because they&rsquo;re shown like a
-              verdict. Cardia AI is built the opposite way — you stay in control of how much you
-              see.
+              A rigorous, transparent assessment — every value measured against a named clinical
+              guideline, with the source one tap away.
             </p>
           </div>
           <ol className="mt-12 grid gap-5 md:grid-cols-3">
             <HowStep
               n={1}
               icon={<PenLine aria-hidden="true" />}
-              title="Enter your numbers"
+              title="Enter your values"
               body="Your latest labs and a little context. Enter only what you have — every marker is optional."
             />
             <HowStep
               n={2}
-              icon={<Layers aria-hidden="true" />}
-              title="See one calm signal"
-              body="A single, gentle summary of how many values fall within guideline ranges. No wall of red. No score that pretends to predict your future."
+              icon={<ListChecks aria-hidden="true" />}
+              title="See what's flagged"
+              body="Cardia leads with the values outside guideline ranges, assessed against current standards — then shows the full picture."
             />
             <HowStep
               n={3}
               icon={<BookOpen aria-hidden="true" />}
-              title="Open only what you want"
-              body="Expand any biomarker to see its category in plain language and the exact, dated guideline it comes from."
+              title="Trace every source"
+              body="Open any biomarker for its guideline category in plain language and the exact, dated source it comes from."
             />
           </ol>
         </div>
@@ -98,26 +96,22 @@ export default function HomePage() {
                 Built on published medicine — not a model&rsquo;s guess.
               </h2>
               <p className="text-paper-muted mt-4 text-lg leading-relaxed">
-                There&rsquo;s no algorithm predicting your risk here. Cardia AI categorizes each
-                value against current clinical guidelines and shows you the source.
+                There is no black-box risk score here. Cardia categorizes each value against current
+                clinical guidelines and shows you the source behind every assessment.
               </p>
             </div>
             <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-3">
               <DiffPoint
                 title="Every category, traceable"
-                body="Not “guidelines say this is high,” but the named, dated guideline and a link to it."
+                body="Not “guidelines say this is high,” but the named, dated guideline and a direct link to it."
               />
               <DiffPoint
-                title="Nothing alarmist"
-                body="Muted, mature language and progressive disclosure — even an elevated value reads as calm information."
+                title="Outside-range first"
+                body="Cardia leads with the values that need attention — clearly flagged and clinically framed, never buried."
               />
               <DiffPoint
                 title="Private by default"
-                body={
-                  FLAGS.captureEnabled
-                    ? "No account, no login. What we store is anonymous and encrypted — never tied to your name or identity."
-                    : "In this version your numbers never leave your device. You choose whether to keep them in your browser."
-                }
+                body="Your numbers stay in your browser. Sharing an anonymized copy for research is an explicit opt-in — never the default."
               />
             </div>
             <div className="border-paper-muted/20 mt-12 flex flex-col items-start gap-5 border-t pt-9 sm:flex-row sm:items-center sm:justify-between">
@@ -176,12 +170,12 @@ function DiffPoint({ title, body }: { title: string; body: string }) {
   );
 }
 
-/** Illustrative, clearly-labeled preview of the calm result — never a real score. */
+/** Illustrative, clearly-labeled preview of a result — never a real score. */
 function HeroSignalPreview() {
   const rows = [
-    { label: "LDL-C", value: "96 mg/dL", tone: "optimal", cat: "Within optimal range" },
-    { label: "Blood pressure", value: "124 / 79", tone: "borderline", cat: "Elevated range" },
-    { label: "HbA1c", value: "5.4 %", tone: "optimal", cat: "Within range" },
+    { label: "LDL-C", value: "96 mg/dL", tone: "optimal", cat: "Within range" },
+    { label: "Blood pressure", value: "142 / 90", tone: "elevated", cat: "Stage 2" },
+    { label: "HbA1c", value: "6.1 %", tone: "borderline", cat: "Prediabetes range" },
   ] as const;
   const toneText = {
     optimal: "text-optimal-strong",
@@ -196,22 +190,22 @@ function HeroSignalPreview() {
 
   return (
     <div className="relative mx-auto w-full max-w-sm">
-      <div className="border-border-hair bg-surface-raised rounded-3xl border p-7 shadow-[0_1px_0_rgba(20,36,47,0.04),0_20px_50px_-30px_rgba(20,36,47,0.35)]">
+      <div className="border-border-hair bg-surface-raised rounded-2xl border p-7 shadow-[0_1px_0_rgba(17,36,48,0.04),0_20px_50px_-30px_rgba(17,36,48,0.35)]">
         <div className="flex items-center justify-between">
           <span className="text-ink-subtle text-xs font-medium tracking-wider uppercase">
             Illustrative example
           </span>
-          <span className="bg-optimal-soft text-optimal-strong rounded-full px-2.5 py-1 text-xs font-medium">
-            Mostly in range
+          <span className="bg-elevated-soft text-elevated-strong rounded-full px-2.5 py-1 text-xs font-medium">
+            2 flagged
           </span>
         </div>
 
         <div className="mt-6 flex items-center gap-5">
-          <CalmArc />
+          <PreviewRing />
           <div>
-            <p className="font-display text-ink text-2xl">A calm summary</p>
+            <p className="font-display text-ink text-2xl">Assessment summary</p>
             <p className="text-ink-muted mt-1 text-sm leading-relaxed">
-              7 of 8 entered values fall within guideline ranges.
+              6 of 8 values within guideline ranges.
             </p>
           </div>
         </div>
@@ -238,8 +232,7 @@ function HeroSignalPreview() {
   );
 }
 
-function CalmArc() {
-  // 280° soft sage arc — a gentle settling, never a danger gauge.
+function PreviewRing() {
   const r = 34;
   const c = 2 * Math.PI * r;
   return (
@@ -250,11 +243,11 @@ function CalmArc() {
         cy="46"
         r={r}
         fill="none"
-        stroke="var(--optimal)"
+        stroke="var(--accent)"
         strokeWidth="8"
         strokeLinecap="round"
         strokeDasharray={c}
-        strokeDashoffset={c * (1 - 0.82)}
+        strokeDashoffset={c * (1 - 0.75)}
         transform="rotate(-90 46 46)"
       />
     </svg>

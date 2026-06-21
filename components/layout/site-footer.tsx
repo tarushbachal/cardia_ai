@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Wordmark } from "./wordmark";
 import { Disclaimer } from "./disclaimer";
 import { REG } from "@/lib/content/regulatory";
-import { FLAGS } from "@/lib/config/flags";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -50,9 +49,7 @@ export function SiteFooter() {
         <div className="border-border-hair mt-10 space-y-3 border-t pt-8">
           <Disclaimer variant="footnote" />
           <Disclaimer variant="footnote">{REG.notADevice}</Disclaimer>
-          <p className="text-ink-subtle text-xs">
-            © {year} Cardia AI · {FLAGS.captureEnabled ? REG.privacyAnonymous : REG.privacyShort}
-          </p>
+          <p className="text-ink-subtle text-xs">© {year} Cardia · {REG.privacyShort}</p>
         </div>
       </div>
     </footer>

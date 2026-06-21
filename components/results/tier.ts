@@ -1,6 +1,6 @@
 import type { SeverityTier } from "@/lib/rules-engine";
 
-/** Muted, mature visual treatment per tier. `attention` never reads as an alarm. */
+/** Clinical visual treatment per tier. `attention` reads clearly as out-of-range. */
 export const TIER_META: Record<
   SeverityTier,
   {
@@ -15,6 +15,7 @@ export const TIER_META: Record<
 > = {
   optimal: {
     groupLabel: "Within guideline range",
+    // (order/labels tuned below)
     dotClass: "bg-optimal",
     chipClass: "bg-optimal-soft text-optimal-strong",
     softClass: "bg-optimal-soft",
@@ -22,7 +23,7 @@ export const TIER_META: Record<
     ringVar: "var(--optimal)",
   },
   borderline: {
-    groupLabel: "Slightly outside the optimal range",
+    groupLabel: "Borderline — monitor",
     dotClass: "bg-borderline",
     chipClass: "bg-borderline-soft text-borderline-strong",
     softClass: "bg-borderline-soft",
@@ -30,7 +31,7 @@ export const TIER_META: Record<
     ringVar: "var(--borderline)",
   },
   attention: {
-    groupLabel: "Outside guideline range — worth a conversation",
+    groupLabel: "Outside guideline range — discuss with your physician",
     dotClass: "bg-elevated",
     chipClass: "bg-elevated-soft text-elevated-strong",
     softClass: "bg-elevated-soft",
@@ -39,5 +40,5 @@ export const TIER_META: Record<
   },
 };
 
-/** Order tiers so "within range" reads first — calm before anything else. */
-export const TIER_DISPLAY_ORDER: SeverityTier[] = ["optimal", "borderline", "attention"];
+/** Order tiers so values outside range read first — lead with what needs attention. */
+export const TIER_DISPLAY_ORDER: SeverityTier[] = ["attention", "borderline", "optimal"];

@@ -15,6 +15,7 @@ import { DoctorPanel } from "./doctor-panel";
 import { PersistenceToggle } from "./persistence-toggle";
 import { ResultsEmptyState } from "./empty-state";
 import { PrintReport } from "./print-report";
+import { PriorityFindings } from "./priority-findings";
 
 type State =
   | { status: "loading" }
@@ -88,8 +89,13 @@ export function ResultsView() {
           </div>
         </div>
 
+        {/* Priority findings — lead with values outside guideline range */}
+        <div className="mt-6">
+          <PriorityFindings results={state.results} />
+        </div>
+
         {/* Summary band — composite signal + at-a-glance snapshot + AI walkthrough */}
-        <div className="mt-6 grid gap-5 lg:grid-cols-12">
+        <div className="mt-5 grid gap-5 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <CompositeSignal composite={state.composite} />
           </div>

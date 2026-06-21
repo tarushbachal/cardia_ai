@@ -7,8 +7,8 @@
  * a cited guideline.
  */
 export const REG = {
-  productName: "Cardia AI",
-  tagline: "Understand your heart-health numbers — calmly.",
+  productName: "Cardia",
+  tagline: "Master your heart health, measured against clinical guidelines.",
 
   /** One line, for footers and compact spots. */
   disclaimerShort:
@@ -16,11 +16,11 @@ export const REG = {
 
   /** Full disclaimer, for onboarding and the results screen. */
   disclaimerFull:
-    "Cardia AI provides educational information that references published clinical guidelines. It does not diagnose, treat, or provide medical advice, and it is not a substitute for professional care. Always discuss your results — and any decisions about medication or treatment — with your physician.",
+    "Cardia provides educational information that references published clinical guidelines. It does not diagnose, treat, or provide medical advice, and it is not a substitute for professional care. Always discuss your results — and any decisions about medication or treatment — with your physician.",
 
   /** General-wellness positioning (keeps us out of SaMD territory). */
   notADevice:
-    "Cardia AI is a general wellness tool. It is not a medical device and does not predict, diagnose, or rule out any disease.",
+    "Cardia is a general wellness tool. It is not a medical device and does not predict, diagnose, or rule out any disease.",
 
   /** Used wherever a result might prompt action. */
   physicianRouting:
@@ -30,10 +30,6 @@ export const REG = {
   sourcesNote:
     "Every category is traceable to a specific, dated clinical guideline — linked, never guessed.",
 
-  /** Privacy posture when capture is OFF (local-only). */
-  privacyShort: "Your numbers stay in your browser. Nothing is sent to a server.",
-
-  /** Privacy posture when anonymous encrypted capture is ON (Phase 2.1). */
-  privacyAnonymous:
-    "Your numbers are stored anonymously and encrypted — never linked to your identity.",
+  /** Privacy posture: nothing is shared unless the user explicitly opts in. */
+  privacyShort: "Your numbers stay in your browser. You choose whether to share an anonymized copy.",
 } as const;

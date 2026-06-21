@@ -31,7 +31,7 @@ export function CompositeSignal({ composite }: { composite: CompositeSummary }) 
         {...reveal(0)}
         className="text-ink-subtle text-xs font-medium tracking-wider uppercase"
       >
-        Your calm summary
+        Summary
       </motion.p>
 
       <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-7 sm:flex-row sm:gap-9">

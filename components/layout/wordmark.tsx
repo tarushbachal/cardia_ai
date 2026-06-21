@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Calm pulse mark + "Cardia AI" wordmark. `tone` adapts for light vs. navy. */
+/** Pulse mark + "Cardia" wordmark. `tone` adapts for light vs. navy. */
 export function Wordmark({
   className,
   tone = "ink",
@@ -36,7 +36,7 @@ export function Wordmark({
           onDark ? "text-paper" : "text-ink",
         )}
       >
-        Cardia <span className={onDark ? "text-accent-on-dark" : "text-accent-strong"}>AI</span>
+        Cardia
       </span>
     </span>
   );

@@ -18,9 +18,9 @@ import {
 } from "@/lib/rules-engine";
 
 export const metadata: Metadata = {
-  title: "Biomarker library · Cardia AI",
+  title: "Biomarker library",
   description:
-    "A calm, fully-sourced reference for cardiovascular biomarkers — every range traced to a named, dated clinical guideline.",
+    "A fully-sourced clinical reference for cardiovascular biomarkers — every range traced to a named, dated guideline.",
 };
 
 /**

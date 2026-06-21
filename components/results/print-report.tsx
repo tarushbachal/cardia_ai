@@ -23,7 +23,7 @@ export function PrintReport({
 
   return (
     <div className="hidden print:block">
-      <h1 className="text-ink text-2xl">Cardia AI — lab value summary</h1>
+      <h1 className="text-ink text-2xl">Cardia — lab value summary</h1>
       <p className="text-ink-muted mt-1 text-sm">
         Prepared {date} · guideline set {composite.guidelineVersion} ·{" "}
         {composite.withinRangeCount} of {composite.enteredCount} entered values within

@@ -86,12 +86,16 @@ const CASES: Record<Exclude<BiomarkerKey, "hdl">, Case[]> = {
     { value: 90, tier: "attention", label: "Stage 2" },
   ],
   bmi: [
-    { value: 18.4, tier: "borderline", label: "Below the healthy-weight range" },
-    { value: 18.5, tier: "optimal", label: "Healthy-weight range" },
-    { value: 24.9, tier: "optimal", label: "Healthy-weight range" },
-    { value: 25, tier: "borderline", label: "Overweight range" },
-    { value: 29.9, tier: "borderline", label: "Overweight range" },
-    { value: 30, tier: "attention", label: "Obesity range" },
+    { value: 18.4, tier: "borderline", label: "Underweight" },
+    { value: 18.5, tier: "optimal", label: "Healthy weight" },
+    { value: 24.9, tier: "optimal", label: "Healthy weight" },
+    { value: 25, tier: "borderline", label: "Overweight" },
+    { value: 29.9, tier: "borderline", label: "Overweight" },
+    { value: 30, tier: "attention", label: "Obesity, class I" },
+    { value: 34.9, tier: "attention", label: "Obesity, class I" },
+    { value: 35, tier: "attention", label: "Obesity, class II" },
+    { value: 39.9, tier: "attention", label: "Obesity, class II" },
+    { value: 40, tier: "attention", label: "Obesity, class III" },
   ],
 };
 

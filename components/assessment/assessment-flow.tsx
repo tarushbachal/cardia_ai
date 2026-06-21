@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowLeft, ArrowRight, Lock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Lock, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,7 +20,7 @@ import {
 import { parseAssessment, validateMeasurement } from "@/lib/schemas";
 import { saveAssessment } from "@/lib/persistence/assessment-store";
 import { captureAssessment } from "@/lib/client/capture";
-import { FLAGS } from "@/lib/config/flags";
+import { Switch } from "@/components/ui/switch";
 
 type ValueMap = Record<BiomarkerKey, string>;
 type YesNo = "" | "yes" | "no";
@@ -42,6 +42,7 @@ export function AssessmentFlow() {
   const [values, setValues] = useState<ValueMap>(emptyValues);
   const [errors, setErrors] = useState<Partial<Record<BiomarkerKey, string>>>({});
   const [submitError, setSubmitError] = useState<string | undefined>();
+  const [shareData, setShareData] = useState(false); // data-sharing is opt-in, off by default
 
   const enteredCount = useMemo(
     () => Object.values(values).filter((v) => v.trim() !== "").length,
@@ -132,7 +133,7 @@ export function AssessmentFlow() {
       return;
     }
     saveAssessment(result.data);
-    captureAssessment(result.data); // anonymous, encrypted, server-side (no-op unless enabled)
+    captureAssessment(result.data, shareData); // shares only if the user opted in
     router.push("/results");
   }
 
@@ -145,10 +146,8 @@ export function AssessmentFlow() {
       <header className="max-w-xl">
         <h1 className="text-ink text-3xl sm:text-4xl">Your assessment</h1>
         <p className="text-ink-muted mt-3 text-base leading-relaxed">
-          Enter the numbers you have — every field is optional.{" "}
-          {FLAGS.captureEnabled
-            ? "We store only an anonymous, encrypted copy — never linked to your identity."
-            : "Nothing is sent to a server; your entries stay in this browser."}
+          Enter the numbers you have — every field is optional. Your entries stay in your browser
+          unless you choose to share them.
         </p>
       </header>
 
@@ -201,6 +200,30 @@ export function AssessmentFlow() {
           </motion.div>
         </div>
 
+        {isLastStep ? (
+          <div className="border-border-hair bg-surface mt-4 flex items-start justify-between gap-4 rounded-xl border px-5 py-4">
+            <div className="flex items-start gap-3">
+              <ShieldCheck className="text-accent-strong mt-0.5 size-4 shrink-0" aria-hidden="true" />
+              <div>
+                <label htmlFor="share-consent" className="text-ink text-sm font-medium">
+                  Share my heart-health metrics to support Cardia&rsquo;s research
+                </label>
+                <p className="text-ink-muted mt-1 text-sm leading-relaxed">
+                  Off by default. Turn this on and an anonymized, encrypted copy of your values is
+                  shared with us — never linked to your name or identity. Leave it off and nothing is
+                  sent.
+                </p>
+              </div>
+            </div>
+            <Switch
+              id="share-consent"
+              checked={shareData}
+              onCheckedChange={setShareData}
+              aria-label="Share my anonymized heart-health metrics"
+            />
+          </div>
+        ) : null}
+
         {submitError ? (
           <p
             role="alert"
@@ -232,8 +255,8 @@ export function AssessmentFlow() {
       <p className="text-ink-subtle mt-6 flex items-center justify-center gap-2 text-xs">
         <Lock className="size-3.5" aria-hidden="true" />
         {enteredCount === 0
-          ? "Stays on your device — enter at least one value to see your results."
-          : `${enteredCount} ${enteredCount === 1 ? "value" : "values"} entered · stays on your device.`}
+          ? "Stored in your browser — enter at least one value to see your results."
+          : `${enteredCount} ${enteredCount === 1 ? "value" : "values"} entered · stored in your browser unless you opt to share.`}
       </p>
     </div>
   );

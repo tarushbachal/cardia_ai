@@ -3,13 +3,15 @@ import { getOrCreateAnonId } from "@/lib/analytics/anon-id";
 import type { ParsedAssessment } from "@/lib/schemas";
 
 /**
- * Fire-and-forget anonymous capture of a completed assessment. Uses sendBeacon
- * (fallback: keepalive fetch) so it never blocks navigation and survives the
- * page transition. Never throws into the UI — the local save already succeeded.
- * Skips entirely unless capture is enabled (the server still re-checks secrets).
+ * Fire-and-forget anonymous capture of a completed assessment. Only runs when
+ * the user has EXPLICITLY opted in (consent) — sharing is never the default.
+ * Uses sendBeacon (fallback: keepalive fetch) so it never blocks navigation and
+ * survives the page transition. Never throws into the UI. The server still
+ * re-checks its secrets; the build flag must also be on.
  */
-export function captureAssessment(parsed: ParsedAssessment): void {
+export function captureAssessment(parsed: ParsedAssessment, consent: boolean): void {
   if (typeof window === "undefined") return;
+  if (!consent) return; // explicit opt-in required — no silent collection
   if (!FLAGS.captureEnabled) return;
 
   try {
