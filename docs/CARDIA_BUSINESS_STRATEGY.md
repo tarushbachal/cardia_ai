@@ -83,14 +83,16 @@ Highest contract value, recurring, and most defensible. License the **rules engi
 
 ## 4. Yearly run-cost estimate (2026 pricing)
 
-| Stage | Vercel | Supabase | AI (Anthropic) | Email / Monitoring | Stripe | **~Total / yr** |
-|---|---|---|---|---|---|---|
-| **Launch** (0–2k users) | Pro, $20/mo (incl. 1 TB) | Pro, $25/mo | ~$0–50/mo (gated + cached, or off) | free tiers | 2.9% + $0.30 on revenue only | **~$600–1,200** |
-| **Growth** (10k–50k MAU) | $50–300/mo (bandwidth) | $25–100/mo (compute / egress) | $50–300/mo (paid, cached) | ~$20–60/mo | on revenue only | **~$2,000–8,000** |
+*The AI explanation layer is out of scope for now, so it is not in this budget. The clinical rules engine that powers every result is free local compute and has no per-use cost.*
 
-- **Sources:** Vercel Pro **$20/seat** incl. 1 TB transfer; Supabase Pro **$25/mo** (~100k MAU, 8 GB DB, 100 GB storage); Claude Sonnet **$3 in / $15 out per million tokens** (each cached explanation ≈ a fraction of a cent).
+| Stage | Vercel | Supabase | Email / Monitoring | Stripe | **~Total / yr** |
+|---|---|---|---|---|---|
+| **Launch** (0–2k users) | Hobby, **free** | Free tier, **free** | free tiers | 2.9% + $0.30 on revenue only | **~$15–50** (just the domain) |
+| **Growth** (paid tiers, once revenue justifies) | Pro, $20/mo | Pro, $25/mo | ~$0–20/mo | on revenue only | **~$540–800** |
+
+- **Sources:** Vercel Hobby and Supabase Free tiers cover a pre-revenue launch at $0; you only move to Vercel Pro **$20/seat** (incl. 1 TB transfer) and Supabase Pro **$25/mo** (~100k MAU, 8 GB DB) once traffic or revenue justifies it — not before.
 - **One-time / variable:** domain ~$15/yr; optional legal review ~$1–3k one-time; marketing spend variable.
-- **Headline:** a real product runs for **under ~$1,000/yr before scale**, staying in the **low thousands** even at meaningful scale — because the clinical engine is free compute and AI is the only variable cost, and it's gated + cached. **Cardia is unusually cheap to operate for a health product.**
+- **Headline:** Cardia can launch and run on **free tiers** — realistically **$15–50/yr** (the domain) before scale, rising only to the **mid hundreds** once paid tiers are needed. Because the clinical engine is free compute and the AI layer is out of scope, **Cardia is unusually cheap to operate for a health product.**
 
 ---
 
