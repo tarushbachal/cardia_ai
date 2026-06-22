@@ -85,14 +85,16 @@ Highest contract value, recurring, and most defensible. License the **rules engi
 
 *The AI explanation layer is out of scope for now, so it is not in this budget. The clinical rules engine that powers every result is free local compute and has no per-use cost.*
 
-| Stage | Vercel | Supabase | Email / Monitoring | Stripe | **~Total / yr** |
-|---|---|---|---|---|---|
-| **Launch** (0–2k users) | Hobby, **free** | Free tier, **free** | free tiers | 2.9% + $0.30 on revenue only | **~$15–50** (just the domain) |
-| **Growth** (paid tiers, once revenue justifies) | Pro, $20/mo | Pro, $25/mo | ~$0–20/mo | on revenue only | **~$540–800** |
+This is a product to be sold, so it runs on **paid tiers** from day one — not free tiers. Free tiers are excluded on purpose: Vercel's Hobby plan **prohibits commercial use**, and Supabase's free project **pauses after inactivity, has no daily backups, caps the database at 500 MB, and has no support**. For a real, sellable product you need the commercial license, automated backups, and uptime that the Pro tiers provide.
 
-- **Sources:** Vercel Hobby and Supabase Free tiers cover a pre-revenue launch at $0; you only move to Vercel Pro **$20/seat** (incl. 1 TB transfer) and Supabase Pro **$25/mo** (~100k MAU, 8 GB DB) once traffic or revenue justifies it — not before.
-- **One-time / variable:** domain ~$15/yr; optional legal review ~$1–3k one-time; marketing spend variable.
-- **Headline:** Cardia can launch and run on **free tiers** — realistically **$15–50/yr** (the domain) before scale, rising only to the **mid hundreds** once paid tiers are needed. Because the clinical engine is free compute and the AI layer is out of scope, **Cardia is unusually cheap to operate for a health product.**
+| Stage | Vercel | Supabase | Domain / Monitoring | Stripe | **~Total / yr** |
+|---|---|---|---|---|---|
+| **Launch** (0–2k users) | Pro, $20/mo | Pro, $25/mo | ~$15/yr domain, free monitoring | 2.9% + $0.30 on revenue only | **~$555–650** |
+| **Growth** (10–50k MAU) | $20–80/mo (bandwidth) | $25–60/mo (compute / egress) | ~$15–40/mo | on revenue only | **~$1,000–2,400** |
+
+- **Sources:** Vercel Pro **$20/seat** (incl. 1 TB transfer); Supabase Pro **$25/mo** (~100k MAU, 8 GB DB, daily backups, no pausing) — both required for commercial use, backups, and support. Domain ~$15/yr.
+- **One-time / variable:** optional legal review ~$1–3k one-time; marketing spend variable.
+- **Headline:** as a sellable product on proper paid infrastructure, Cardia runs for roughly **$550–650/yr at launch**, rising into the **low thousands** only at meaningful scale. It stays cheap because the clinical engine is free local compute and the AI layer is out of scope — so there is **no per-use cost to serve a result.** That is unusually lean for a health product.
 
 ---
 
